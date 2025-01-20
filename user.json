@@ -1,0 +1,65 @@
+{
+   "amir@899": {
+      "type": "admin",
+      "pass": "Q4##56bN",
+      "fname": "_",
+      "lname": "_",
+      "email": "_",
+      "phone": "_",
+      "fav": "_"
+   },
+   "ahmad@sol": {
+      "type": "employee",
+      "pass": "23Cf@vcvbm",
+      "fname": "Ahmad",
+      "lname": "Mosavi",
+      "email": "",
+      "phone": "",
+      "fav": ""
+   },
+   "Sia34Mak": {
+      "type": "employee",
+      "pass": "3432SM@12",
+      "fname": "Siamak",
+      "lname": "Ansari",
+      "email": "",
+      "phone": "",
+      "fav": ""
+   },
+   "Alireza12CV": {
+      "type": "employee",
+      "pass": "2277020CVVG",
+      "fname": "Ali",
+      "lname": "jamshidi",
+      "email": "",
+      "phone": "",
+      "fav": ""
+   },
+   "Amini567": {
+      "type": "customer",
+      "pass": "20942XsvH@Z",
+      "fname": "Ramin",
+      "lname": "Amini",
+      "email": "",
+      "phone": "",
+      "fav": ""
+   },
+   "Akbari78887@f": {
+      "type": "customer",
+      "pass": "35664FTUn45",
+      "fname": "Milad",
+      "lname": "Akbari",
+      "email": "",
+      "phone": "",
+      "fav": ""
+   },
+   "aminam": {
+      "type": "customer",
+      "pass": "941837FN",
+      "fname": "amin",
+      "lname": "peykani",
+      "email": "amin@gmail.com",
+      "phone": "123456789",
+      "fav": "pizza"
+   }
+}

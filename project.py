@@ -1,18 +1,35 @@
 import time
 import random
+import json
 import math
 
-member = {'amir@899':{'type':'admin','pass':'Q4##56bN','fname':'_','lname':'_','email':'_','phone':'_','fav':'_'},
-          'ahmad@sol':{'type':'employee','pass':'23Cf@vcvbm','fname':'Ahmad','lname':'Mosavi','email':'','phone':'','fav':''},
-          'Sia34Mak':{'type':'employee','pass':'3432SM@12','fname':'Siamak','lname':'Ansari','email':'','phone':'','fav':''},
-          'Alireza12CV':{'type':'employee','pass':'2277020CVVG','fname':'Ali','lname':'jamshidi','email':'','phone':'','fav':''},
-          'Amini567':{'type':'customer','pass':'20942XsvH@Z','fname':'Ramin','lname':'Amini','email':'','phone':'','fav':''},
-          'Akbari78887@f':{'type':'customer','pass':'35664FTUn45','fname':'Milad','lname':'Akbari','email':'','phone':'','fav':''},}
+json_file1 = open('BP/project/user.json','r')
+member = json.load(json_file1)
+json_file1.close()
 
-food = {'kabab':400000,'Berenj':100000,'Khoresht':220000,'Ghormesabzi':320000,'Zereshkpolo':270000,
-        'Ghime':300000,'Delester':35000,'Salad':15000,'Noshabe':20000,'Dogh':20000}
+json_file2 = open('BP/project/food.json','r')
+food = json.load(json_file2)
+json_file2.close()
 
-offer = ['QWBv23@#v','sd67Hj#!x','23FCV%n&5']
+json_file3 = open('BP/project/offer.json','r')
+offer = json.load(json_file3)
+json_file3.close()
+
+# member = json.load(json_file1)
+# food = json.load(json_file2)
+# offer = json.load(json_file3)
+
+# member = {'amir@899':{'type':'admin','pass':'Q4##56bN','fname':'_','lname':'_','email':'_','phone':'_','fav':'_'},
+#           'ahmad@sol':{'type':'employee','pass':'23Cf@vcvbm','fname':'Ahmad','lname':'Mosavi','email':'','phone':'','fav':''},
+#           'Sia34Mak':{'type':'employee','pass':'3432SM@12','fname':'Siamak','lname':'Ansari','email':'','phone':'','fav':''},
+#           'Alireza12CV':{'type':'employee','pass':'2277020CVVG','fname':'Ali','lname':'jamshidi','email':'','phone':'','fav':''},
+#           'Amini567':{'type':'customer','pass':'20942XsvH@Z','fname':'Ramin','lname':'Amini','email':'','phone':'','fav':''},
+#           'Akbari78887@f':{'type':'customer','pass':'35664FTUn45','fname':'Milad','lname':'Akbari','email':'','phone':'','fav':''},}
+
+# food = {'kabab':400000,'Berenj':100000,'Khoresht':220000,'Ghormesabzi':320000,'Zereshkpolo':270000,
+#         'Ghime':300000,'Delester':35000,'Salad':15000,'Noshabe':20000,'Dogh':20000}
+
+# offer = {'QWBv23@#v','sd67Hj#!x','23FCV%n&5'}
 
 
 
@@ -29,8 +46,6 @@ def sign():
     else:
         print('\n')
         sign()
-
-
 
 def signin():
     counter = 0
@@ -80,8 +95,6 @@ def signin():
                         break
             continue
 
-
-
 def forgot(username):
     counter = 0
     while(True):
@@ -111,7 +124,7 @@ def forgot(username):
                         elif(command == member[username]['fav']):
                             print('\n')
                             page(username)
-                            break
+                            return 0
                         else:
                             print('\n')
                             counter += 1
@@ -152,8 +165,6 @@ def forgot(username):
                     if(time.time() - start > 10):
                         break
             continue
-
-
 
 def signup():
 
@@ -243,9 +254,18 @@ def signup():
             break
     
     member[username] = {'type':'customer','pass':password,'fname':fname,'lname':lname,'email':email,'phone':phone,'fav':fav}
+    with open('BP/project/user.json', 'w') as json_file:
+        json.dump(member, json_file, indent=3)
     page(username)
     
 def page(username):
     print('wellcome ' + member[username]['fname'] + " " + member[username]['lname'])
+    while(True):
+        if(member[username]['type'] == 'admin'):
+            #code
+        elif(member[username]['type'] == 'employee'):
+            #code
+        elif(member[username]['type'] == 'customer'):
+            #code
 
 sign()
