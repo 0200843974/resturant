@@ -42,7 +42,11 @@
       "lname": "Amini",
       "email": "",
       "phone": "",
-      "fav": ""
+      "fav": "",
+      "wallet": "890000",
+      "cart": [],
+      "payment": "0",
+      "history": {}
    },
    "Akbari78887@f": {
       "type": "customer",
@@ -51,15 +55,60 @@
       "lname": "Akbari",
       "email": "",
       "phone": "",
-      "fav": ""
+      "fav": "",
+      "wallet": "1000000",
+      "cart": [],
+      "payment": "0",
+      "history": {}
    },
-   "aminam": {
+   "shayanemati": {
       "type": "customer",
-      "pass": "941837FN",
-      "fname": "amin",
-      "lname": "peykani",
-      "email": "amin@gmail.com",
-      "phone": "123456789",
-      "fav": "pizza"
+      "pass": "87654321",
+      "fname": "shayan",
+      "lname": "nemati",
+      "email": "nemati@gmail.com",
+      "phone": "09030386519",
+      "fav": "kabab",
+      "wallet": "14000",
+      "cart": [],
+      "payment": "160000",
+      "history": {
+         "1": [
+            [
+               "kabab",
+               400000
+            ],
+            [
+               "berenj",
+               100000
+            ],
+            [
+               "dogh",
+               20000
+            ]
+         ],
+         "2": [
+            [
+               "ghime",
+               300000
+            ],
+            [
+               "dogh",
+               20000
+            ]
+         ],
+         "3": [
+            [
+               "ghormesabzi",
+               320000
+            ]
+         ],
+         "4": [
+            [
+               "kabab",
+               400000
+            ]
+         ]
+      }
    }
 }

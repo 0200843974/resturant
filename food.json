@@ -1,12 +1,12 @@
 {
    "kabab": 400000,
-   "Berenj": 100000,
-   "Khoresht": 220000,
-   "Ghormesabzi": 320000,
-   "Zereshkpolo": 270000,
-   "Ghime": 300000,
-   "Delester": 35000,
-   "Salad": 15000,
-   "Noshabe": 20000,
-   "Dogh": 20000
+   "berenj": 100000,
+   "khoresht": 220000,
+   "ghormesabzi": 320000,
+   "zereshkpolo": 270000,
+   "ghime": 300000,
+   "delester": 35000,
+   "salad": 15000,
+   "noshabe": 20000,
+   "dogh": 20000
 }
