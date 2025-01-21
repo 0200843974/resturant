@@ -60,55 +60,5 @@
       "cart": [],
       "payment": "0",
       "history": {}
-   },
-   "shayanemati": {
-      "type": "customer",
-      "pass": "87654321",
-      "fname": "shayan",
-      "lname": "nemati",
-      "email": "nemati@gmail.com",
-      "phone": "09030386519",
-      "fav": "kabab",
-      "wallet": "14000",
-      "cart": [],
-      "payment": "160000",
-      "history": {
-         "1": [
-            [
-               "kabab",
-               400000
-            ],
-            [
-               "berenj",
-               100000
-            ],
-            [
-               "dogh",
-               20000
-            ]
-         ],
-         "2": [
-            [
-               "ghime",
-               300000
-            ],
-            [
-               "dogh",
-               20000
-            ]
-         ],
-         "3": [
-            [
-               "ghormesabzi",
-               320000
-            ]
-         ],
-         "4": [
-            [
-               "kabab",
-               400000
-            ]
-         ]
-      }
    }
 }
