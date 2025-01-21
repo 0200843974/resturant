@@ -16,6 +16,9 @@ json_file3 = open('C://py/BP/project/offer.json','r')
 offer = json.load(json_file3)
 json_file3.close()
 
+json_file4 = open('C://py/BP/project/account.json','r')
+account = json.load(json_file4)
+json_file4.close()
 # member = json.load(json_file1)
 # food = json.load(json_file2)
 # offer = json.load(json_file3)
@@ -34,19 +37,22 @@ json_file3.close()
 
 
 
-def sign():
-    command = input('wellcome to elmos resturant...\nplease sign in on system\nif you have\'nt an account sign up\n1.sign in\n2.sign up\n')
-    if(command == 'exit'):
-        quit()
-    elif(command == '1'):
-        print('\n')
-        signin()
-    elif(command == '2'):
-        print('\n')
-        signup()
+def sign(account):
+    if(account != ""):
+        page(account)
     else:
-        print('\n')
-        sign()
+        command = input('wellcome to elmos resturant...\nplease sign in on system\nif you have\'nt an account sign up\n1.sign in\n2.sign up\n')
+        if(command == 'exit'):
+            quit()
+        elif(command == '1'):
+            print('\n')
+            signin()
+        elif(command == '2'):
+            print('\n')
+            signup()
+        else:
+            print('\n')
+            sign()
 
 def signin():
     counter = 0
@@ -81,6 +87,9 @@ def signin():
             break
         elif(command == member[user]['pass']):
             print('\n')
+            account['sign'] = user
+            with open('C://py/BP/project/account.json','w') as json_file:
+                json.dump(account,json_file,indent=3)
             page(user)
             break
         else:
@@ -124,6 +133,9 @@ def forgot(username):
                             break
                         elif(command == member[username]['fav']):
                             print('\n')
+                            account['sign'] = username
+                            with open('C://py/BP/project/account.json','w') as json_file:
+                                json.dump(account,json_file,indent=3)
                             page(username)
                             return 0
                         else:
@@ -152,6 +164,9 @@ def forgot(username):
                     continue
         elif(command == member[username]['email']):
             print('\n')
+            account['sign'] = username
+            with open('C://py/BP/project/account.json','w') as json_file:
+                json.dump(account,json_file,indent=3)
             page(username)
             break
         else:
@@ -255,13 +270,180 @@ def signup():
     page(username)
     
 def page(username):
+    print('\n')
     print('wellcome ' + member[username]['fname'] + " " + member[username]['lname'])
     while(True):
         # print('\n')
         if(member[username]['type'] == 'admin'):
             print('\n')
         elif(member[username]['type'] == 'employee'):
-            print('\n')
+             while(True):
+                print('\n')
+                command = input('1.foods menu\n2.change food price\n3.change employee information\n4.add discount code\n5.customer purchase history\n6.sign out\n')
+                if(command == 'exit'):
+                    quit()
+                elif(command == '1'):
+                    print('\n')
+                    for key in food:
+                        print(key + "..." + str(food[key]))
+                elif(command == '2'):
+                    while(True):
+                        command = input('\nif you want to back enter 0\nenter the name of the desired food:\n')
+                        if(command == 'exit'):
+                            quit()
+                        elif(command == '0'):
+                            print('\n')
+                            break
+                        elif(command in list(food.keys())):
+                            foodname = command
+                            while(True):
+                                command = input('\nif you want to back enter 0\nenter the desired amount:\n')
+                                pattern = '[0-9]'
+                                if(command == 'exit'):
+                                    quit()
+                                elif(command == '0'):
+                                    print('\n')
+                                    break
+                                elif(re.match(pattern,command) and int(command) > 0):
+                                    food[foodname] = int(command)
+                                    with open('C://py/BP/project/food.json','w') as json_file:
+                                        json.dump(food,json_file,indent=3)
+                                    print('\nfood price changed successfully')
+                                    page(username)
+                                else:
+                                    print('\nplease enter a valid value')
+                                    continue
+                        else:
+                            print('\nthe desired food is not available')
+                            continue
+                elif(command == '3'):
+                    while(True):
+                        command = input('\nif tou want to back enter 0\nselect the information you want to change:\n1.password\n2.email\n3.phone\n4.favorite food\n')
+                        if(command == 'exit'):
+                            quit()
+                        elif(command == '0'):
+                            print('\n')
+                            break
+                        elif(command == '1'):
+                            while(True):
+                                command = input('\nif you want to back enter 0\nplease enter the new password:\n')
+                                if(command == 'exit'):
+                                    quit()
+                                elif(command == '0'):
+                                    print('\n')
+                                    break
+                                elif(len(command) >= 8):
+                                    print('\npassword successfully changed')
+                                    member[username]['pass'] = command
+                                    with open('C://py/BP/project/user.json','w') as json_file:
+                                        json.dump(member,json_file,indent=3)
+                                    break
+                                else:
+                                    print('\npassword must be more than 8 characters')
+                                    continue
+                        elif(command == '2'):
+                            emails = []
+                            for key in member:
+                                emails.append(member[key]['email'])
+                            while(True):
+                                command = input('\nif you want to back enter 0\nplease enter the new email address:\n')
+                                if(command == 'exit'):
+                                    quit()
+                                elif(command == '0'):
+                                    print('\n')
+                                    break
+                                elif(command not in emails):
+                                    print('\nemail address successfully changed')
+                                    member[username]['email'] = command
+                                    with open('C://py/BP/project/user.json','w') as json_file:
+                                        json.dump(member,json_file,indent=3)
+                                    break
+                                else:
+                                    print('\nemail address must be unique')
+                                    continue
+                        elif(command == '3'):
+                            phones = []
+                            for key in member:
+                                phones.append(member[key]['phone'])
+                            while(True):
+                                command = input('\nif you want to back enter 0\nplease enter the new phone number:\n')
+                                if(command == 'exit'):
+                                    quit()
+                                elif(command == '0'):
+                                    print('\n')
+                                    break
+                                elif(command not in phones):
+                                    print('\nphone number successfully changed')
+                                    member[username]['phone'] = command
+                                    with open('C://py/BP/project/user.json','w') as json_file:
+                                        json.dump(member,json_file,indent=3)
+                                    break
+                                else:
+                                    print('\nphone number must be unique')
+                                    continue
+                        elif(command == '4'):
+                            while(True):
+                                command = input('\nif you want to back enter 0\nplease enter your fav food:\n')
+                                if(command == 'exit'):
+                                    quit()
+                                elif(command == '0'):
+                                    print('\n')
+                                    break
+                                else:
+                                    print('\nfavorite food successfully changed')
+                                    member[username]['fav'] = command
+                                    with open('C://py/BP/project/user.json','w') as json_file:
+                                        json.dump(member,json_file,indent=3)
+                                    break      
+                        else:
+                            print('\nPlease select from the options')
+                            continue
+                elif(command == '4'):
+                    command = input('\nif you want to back enter 0\nplease enter the new discount code:\n')
+                    if(command == 'exit'):
+                        quit()
+                    elif(command == '0'):
+                        print('\n')
+                        break
+                    elif(command not in list(offer.keys())):
+                        offer[command] = command
+                        with open('C://py/BP/project/offer.json','w') as json_file:
+                            json.dump(offer,json_file,indent=3)
+                        print('\ndiscount code successfully added')
+                        break
+                    else:
+                        print('\ndiscount code already exists')
+                        continue
+                elif(command == '5'):
+                    while(True):
+                        command = input('\nif you want to back enter 0\nplease enter your username:\n')
+                        if(command == 'exit'):
+                            quit()
+                        elif(command == '0'):
+                            print('\n')
+                            break
+                        elif(command in list(member.keys())):
+                            print('\n')
+                            for key in member[command]['history']:
+                                print("\n" + key + ":")
+                                sum = 0
+                                for item in member[command]['history'][key]:
+                                    print(item[0] +"..."+ str(item[1]))
+                                    sum += item[1]
+                                print(f'total price: {sum}')
+                            break
+                        else:
+                            print('\nusername is incorrect')
+                            continue
+                elif(command == '6'):
+                    print('\n')
+                    account['sign'] = ""
+                    with open('C://py/BP/project/account.json','w') as json_file:
+                        json.dump(account,json_file,indent=3)
+                    sign(account['sign'])
+                else:
+                    print('\nplease select from the option')
+                    continue
         elif(member[username]['type'] == 'customer'):
             while(True):
                 print('\n')
@@ -526,8 +708,12 @@ def page(username):
                         print(f'total price: {sum}')
                 elif(command == '7'):
                     print('\n')
-                    sign()
+                    account['sign'] = ""
+                    with open('C://py/BP/project/account.json','w') as json_file:
+                        json.dump(account,json_file,indent=3)
+                    sign(account['sign'])
                 else:
-                    print('\n')
+                    print('\nplease select from the option')
                     continue
-sign()
+
+sign(account['sign'])
